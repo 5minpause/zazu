@@ -19,8 +19,24 @@ describe('PrefixScript', () => {
         prefixScript.space = true
       })
 
-      it('returns data when space is passed', () => {
-        expect(prefixScript.query('test data')).is.equal('data')
+      describe('when arguments are also required', () => {
+        beforeEach(() => {
+          prefixScript.args = 'Required'
+        })
+
+        it('returns data when space is passed', () => {
+          expect(prefixScript.query('test data')).is.equal('data')
+        })
+      })
+
+      describe('when arguments are optional', () => {
+        beforeEach(() => {
+          prefixScript.args = 'Optional'
+        })
+
+        it('returns data when space is passed', () => {
+          expect(prefixScript.query('test')).is.equal('data')
+        })
       })
     })
     describe('when spaces arent required', () => {
